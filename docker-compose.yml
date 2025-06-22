@@ -1,0 +1,7 @@
+version: '3.9'
+
+services: 
+  bot:
+    build: .
+    container_name: telegram-bot
+    restart: unless-stopped
