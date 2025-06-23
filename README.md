@@ -64,5 +64,5 @@ Telegram-бот для парсинга цен с сайта DNS (dns-shop.ru). 
   ```
 ### Установка всех зависимостей:
    ```bash
-      pip install -r requirements.txt
+   pip install -r requirements.txt
    ```
