@@ -20,15 +20,19 @@ Telegram-бот для парсинга цен с сайта DNS (dns-shop.ru). 
    git clone https://github.com/klayd1337/DNSParseBot.git
    cd DNSParseBot
    ```
-2. Переходим в папку репозитория:
+2. Перейдите в папку репозитория:
    ```bash
    cd DNSParseBot
    ```
-3. Создадим виртуальное окружение venv
+3. Создайте виртуальное окружение venv
    ```bash
    python -m venv venv
    ```
-5. Установите зависимости:
+4. Запустите  виртуальное окружение venv
+   ```bash
+   ./venv/Scripts/activate
+   ```
+6. Установите зависимости:
    ```bash
    pip install -r requirements.txt
    ```
@@ -41,9 +45,9 @@ Telegram-бот для парсинга цен с сайта DNS (dns-shop.ru). 
       -- sqlite3
       -- csv (для работы с CSV)
       ```
-6. Настройте конфиг в файле config.py:
+7. Настройте конфиг в файле config.py:
    - TOKEN = "ваш_токен_бота"
-7. Запустите бота:
+8. Запустите бота:
    ```bash
    python bot.py
    ```
