@@ -5,7 +5,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 import csv
-import sqlite3
 import os
 
 def parse_dns(search_query):
