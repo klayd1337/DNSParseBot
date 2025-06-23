@@ -19,12 +19,15 @@ Telegram-бот для парсинга цен с сайта DNS (dns-shop.ru). 
    ```bash
    git clone https://github.com/klayd1337/DNSParseBot.git
    cd DNSParseBot
+   ```
 2. Переходим в папку репозитория:
    ```bash
    cd DNSParseBot
+   ```
 2. Установите зависимости:
    ```bash
    pip install -r requirements.txt
+   ```
 3. Настройте конфиг в файле config.py:
    - TOKEN = "ваш_токен_бота"
 4. Запустите бота:
@@ -59,6 +62,7 @@ Telegram-бот для парсинга цен с сайта DNS (dns-shop.ru). 
   -- sqlite3
   -- csv (для работы с CSV)
   ```
-  ### Установка всех зависимостей:
-    ```bash
-    pip install -r requirements.txt
+### Установка всех зависимостей:
+   ```bash
+      pip install -r requirements.txt
+   ```
