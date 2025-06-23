@@ -2,7 +2,7 @@
 import telebot
 from telebot import types
 import threading
-import time
+from time import sleep
 import schedule
 import config
 from bot_handlers import *
@@ -10,7 +10,7 @@ from bot_handlers import *
 #========================================================
 
 # Инициализация бота
-bot = telebot.TeleBot(config.token)
+bot = telebot.TeleBot(config.token) 
 
 # Создание базы данных при запуске
 init_db()
@@ -76,7 +76,7 @@ def handle_callback(call):
 def schedule_checker():
     while True:
         schedule.run_pending()
-        time.sleep(1)
+        sleep(1)
 
 # Планировщик задач
 schedule.every().day.do(lambda: check_prices(bot))

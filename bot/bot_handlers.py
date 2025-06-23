@@ -2,14 +2,14 @@
 from telebot import types
 import sqlite3
 from datetime import datetime
-from main import parse_dns
+from scraper.main import parse_dns
 import os
 
 #========================================================
 
 # База данных для хранения запросов пользователей
-os.makedirs("db", exist_ok=True)
-DB_NAME = 'db/price_tracker.db'
+os.makedirs("database", exist_ok=True)
+DB_NAME = 'database/price_tracker.db'
 
 def init_db():
     conn = sqlite3.connect(DB_NAME)
@@ -60,6 +60,8 @@ def pop_state(user_id):
         return navigation_history[user_id].pop()
     return 'main_menu'
 
+#========================================================
+
 def create_reply_keyboard(*buttons, with_back=False):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     for button in buttons:
@@ -87,7 +89,11 @@ def send_welcome(bot, message):
         'Мои отслеживаемые товары',
         'Удалить товар'
     )
-    bot.send_message(user_id, "Главное меню:", reply_markup=markup)
+    bot.send_message(user_id,
+                     '''Привет. Я бот, который поможет тебе отслеживать цены на товары в интернет магазине DNS.
+                        \nДля поиска отправь мне имя товара, и я поищу его.
+                        \nГлавное меню:''',
+                     reply_markup=markup)
 
 #========================================================
 
@@ -397,4 +403,4 @@ def check_prices(bot):
 #========================================================
 
 def delete_temp_dir():
-    os.system('del *.csv' if os.name == 'nt' else 'rm -r *')
+    os.system('del ../temp/*.csv' if os.name == 'nt' else 'rm -i temp/*')

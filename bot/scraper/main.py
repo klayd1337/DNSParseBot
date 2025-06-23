@@ -12,7 +12,7 @@ def parse_dns(search_query):
     options = uc.ChromeOptions()
     options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument("--start-maximized")
-    
+
     driver = uc.Chrome(options=options)
     
     try:
@@ -84,49 +84,3 @@ def parse_dns(search_query):
     
     finally:
         driver.quit()
-
-def create_database_handler(DB_NAME):
-    conn = sqlite3.connect(DB_NAME)
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS query_product (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            price INTEGER,
-            link TEXT,
-            photo_link TEXT,
-            UNIQUE(name, price) ON CONFLICT IGNORE
-        );
-    ''')
-    conn.commit()
-    conn.close()
-
-def load_csv_to_sql(DB_NAME, search_query):
-    conn = sqlite3.connect(DB_NAME)
-    cursor = conn.cursor()
-
-    with open(f'temp/dns_{search_query}.csv', mode='r', encoding='utf-8') as file:
-        reader = csv.reader(file)
-        # Пропускаем заголовок
-        next(reader)
-        for row in reader:
-            try:
-                price = int(row[1].replace(' ', '')) if row[1] else 0
-                cursor.execute('''
-                    INSERT OR IGNORE INTO query_product (name, price, link, photo_link)
-                    VALUES (?, ?, ?, ?)
-                ''', (row[0], price, row[2], row[3]))
-            except Exception as e:
-                print(f"Ошибка при добавлении записи: {e}")
-    
-    conn.commit()
-    conn.close()
-
-def main():
-    search_query = 'Samsung Galaxy S23'
-    parse_dns(search_query)
-    create_database_handler('products.sqlite')
-    load_csv_to_sql('products.sql', search_query)
-
-if __name__ == '__main__':
-    main()
