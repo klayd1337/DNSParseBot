@@ -2,7 +2,7 @@
 from telebot import types
 import sqlite3
 from datetime import datetime
-from scraper.main import parse_dns
+from scraper import parse_dns
 import os
 
 #========================================================
