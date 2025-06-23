@@ -29,16 +29,15 @@ Telegram-бот для парсинга цен с сайта DNS (dns-shop.ru). 
    python -m venv venv
    ```
 
-## 📌 Зависимости
-  ```text
-  -- Python 3.8+
-  -- pyTelegramBotAPI >= 4.0
-  -- selenium >= 4.0
-  -- undetected-chromedriver
-  -- sqlite3
-  -- csv (для работы с CSV)
-  ```
-
+   ### 📌 Зависимости
+      ```text
+      -- Python 3.8+
+      -- pyTelegramBotAPI >= 4.0
+      -- selenium >= 4.0
+      -- undetected-chromedriver
+      -- sqlite3
+      -- csv (для работы с CSV)
+      ```
 5. Установите зависимости:
    ```bash
    pip install -r requirements.txt
