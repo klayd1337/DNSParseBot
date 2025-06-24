@@ -14,6 +14,8 @@ def parse_dns(search_query):
 
     driver = uc.Chrome(options=options)
     
+    os.makedirs("temp", exist_ok=True)
+    
     try:
         driver.get(f"https://www.dns-shop.ru/search/?q={search_query}")
         
@@ -67,8 +69,6 @@ def parse_dns(search_query):
             except Exception as e:
                 print(f"Ошибка парсинга товара: {str(e)}")
                 continue
-        
-        os.makedirs("temp", exist_ok=True)
 
         # Преобразуем словарь обратно в список
         data = list(unique_products.values())
